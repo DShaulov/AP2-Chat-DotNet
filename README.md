@@ -7,15 +7,22 @@
 
 ### Solution Structure:
 
-Consists of 2 projects:
+Consists of 3 projects:
 1) AP2-Chat-DotNet-React
 2) AP2-Chat-DotNet-WebAPI
+3) AP2-Chat-DotNet-Rank
 
+AP2-Chat-DotNet-Rank is a standalone project for part 1 of the exercise.
 
 AP2-Chat-DotNet-WebAPI and AP2-Chat-DotNet-React must run together in order to function properly.
 
 ** The WebAPI and React projects must run on the ports specified in their configuration files in order for singalR to work:
   7201 for the API and 3000 for React. **
+
+### How to run AP2-Chat-DotNet-Rank:
+1) Open solution in Visual Studio.
+2) Right click on AP2-Chat-DotNet-Rank project -> Set as Startup Project.
+3) Click Start (green arrow).
 
 ### How to run WebAPI + React:
 1) Open solution in Visual Studio.
