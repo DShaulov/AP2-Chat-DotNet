@@ -1,4 +1,6 @@
 ﻿const { createProxyMiddleware } = require('http-proxy-middleware');
+import apiPort from "./ApiPort";
+
 
 const context = [
     "/api",
@@ -7,8 +9,9 @@ const context = [
 ];
 
 module.exports = function (app) {
+    const target = "https://localhost:" + apiPort;
     const appProxy = createProxyMiddleware(context, {
-        target: 'https://localhost:7201',
+        target: target,
         secure: false
     });
 

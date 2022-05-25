@@ -2,6 +2,7 @@ import './Styles/ChatScreen.css';
 import MessageDisplay from './MessageDisplay';
 import ContactDisplay from './ContactDisplay';
 import { useState, useRef, useEffect } from 'react';
+import apiPort from "../../ApiPort";
 
 function ChatScreen(props) {
     const [showMessageDisplay, setShowMessageDisplay] = useState(false);
@@ -20,11 +21,13 @@ function ChatScreen(props) {
     const setFinishedSettingContacts = props.functions.setFinishedSettingContacts;
     const setFinishedSettingMessages = props.functions.setFinishedSettingMessages;
 
+    const webApiPort = apiPort;
+
     useEffect(() => {
         async function fetchMessages() {
             if (chattingWithId !== '') {
                 var allMessages = [];
-                await fetch(`/api/contacts/${props.chattingWithId}/messages`, {
+                await fetch("https://localhost:" + webApiPort + `/api/contacts/${props.chattingWithId}/messages`, {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + props.token

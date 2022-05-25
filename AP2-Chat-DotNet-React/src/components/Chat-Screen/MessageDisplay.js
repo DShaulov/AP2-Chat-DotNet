@@ -20,7 +20,7 @@ function MessageDisplay(props) {
         let server = retrieveContactServer(props.userChattingWithId);
         let isMyServer = (server === "http://localhost:" + webApiPort) || (server === "localhost:" + webApiPort) || (server === "https://localhost:" + webApiPort) || (server === "http://localhost:" + webApiPort);
         let content = event.target[0].value;
-        await fetch(`api/contacts/${props.userChattingWithId}/messages?content=${content}`, {
+        await fetch("https://localhost:" + webApiPort + `/api/contacts/${props.userChattingWithId}/messages?content=${content}`, {
             method: "POST",
             headers: {
                 Authorization: "Bearer " + props.token
@@ -28,7 +28,7 @@ function MessageDisplay(props) {
         });
 
         if (isMyServer) {
-            await fetch(`api/transfer?from=${props.currentUser.id}&to=${props.userChattingWithId}&content=${content}`, {
+            await fetch("https://localhost:" + webApiPort + `/api/transfer?from=${props.currentUser.id}&to=${props.userChattingWithId}&content=${content}`, {
                 method: "POST",
             });
         }
@@ -39,7 +39,7 @@ function MessageDisplay(props) {
         }
 
         event.target[0].value = "";
-        await fetch(`api/hub/update`, {
+        await fetch("https://localhost:" + webApiPort + `/api/hub/update`, {
             method: "POST",
         });
     };

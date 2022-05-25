@@ -2,12 +2,13 @@ import './Styles/LoginScreen.css';
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import $ from 'jquery';
+import apiPort from "../../ApiPort";
 
 function LoginScreen(props) {
     const [usernameNotFilled, setUsernameNotFilled] = useState(false);
     const [passwordNotFilled, setPasswordNotFilled] = useState(false);
     const [userNotValid, setUserNotValid] = useState(false);
+    const webApiPort = apiPort;
     /**
      * Handles submission of login form - 
      * If username or password fields are empty, displays error
@@ -35,7 +36,7 @@ function LoginScreen(props) {
         }
         var token;
         // Make POST request to server to login
-        await fetch(`/userauth?username=${username}&password=${password}`, {
+        await fetch("https://localhost:" + webApiPort + `/userauth?username=${username}&password=${password}`, {
             method: "POST"
         })
             .then(data => data.text())
@@ -45,7 +46,7 @@ function LoginScreen(props) {
         }
         else {
             var userJson;
-            await fetch(`/userauth/getuser?id=${username}`, {
+            await fetch("https://localhost:" + webApiPort + `/userauth/getuser?id=${username}`, {
                 method: "POST"
             })
                 .then(data => data.json())

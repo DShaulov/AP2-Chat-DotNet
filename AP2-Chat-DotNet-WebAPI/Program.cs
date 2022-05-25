@@ -37,10 +37,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Allow All",
-        builder =>
+        corsBuilder =>
         {
             String[] allowedOrigins = { "https://localhost:3000" };
-            builder.AllowAnyHeader()
+            corsBuilder.AllowAnyHeader()
             .AllowAnyMethod()
             .WithOrigins(allowedOrigins)
             .AllowCredentials();

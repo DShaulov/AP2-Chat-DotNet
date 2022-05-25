@@ -15,6 +15,7 @@ Consists of 3 projects:
 AP2-Chat-DotNet-Rank is a standalone project for part 1 of the exercise.
 
 AP2-Chat-DotNet-WebAPI and AP2-Chat-DotNet-React must run together in order to function properly.
+The WebAPI uses JWT tokens for request authorization.
 
 ** The WebAPI and React projects must run on the ports specified in their configuration files in order for singalR to work:
   7201 for the API and 3000 for React. (Cors policy with all hosts allowed blocks react-signalr) **
@@ -29,6 +30,8 @@ AP2-Chat-DotNet-WebAPI and AP2-Chat-DotNet-React must run together in order to f
 2) Right click on the solution -> Set Startup Projects -> Multiple Startup Projects -> AP2-Chat-DotNet-React (start) + AP2-Chat-DotNet-WebAPI (start).
 3) Open AP2-Chat-DotNet-React in terminal and run "npm install" to install required packages.
 4) Click Start (green arrow).
+
+### How to change ports for the WebAPI:
 
 ### Hardcoded Users:
 The WebAPI makes use of services and static data structures in order to simulate a database.

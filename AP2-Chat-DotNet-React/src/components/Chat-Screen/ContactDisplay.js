@@ -128,14 +128,14 @@ function ContactDisplay(props) {
         let isMyServer = (server === "http://localhost:" + webApiPort) || (server === "localhost:" + webApiPort) || (server === "https://localhost:" + webApiPort) || (server === "http://localhost:" + webApiPort);
         if (isMyServer) {
             let contactExists;
-            await fetch(`userauth/checkexists?id=${contactId}`, {
+            await fetch("https://localhost:" + webApiPort + `userauth/checkexists?id=${contactId}`, {
                 method: "POST"
             })
                 .then(data => data.text())
                 .then(text => { contactExists = text });
             if (contactExists === "EXISTS") {
                 // Add contact on my server
-                await fetch(`/api/contacts?id=${contactId}&name=${displayName}&server=${myServer}`, {
+                await fetch("https://localhost:" + webApiPort + `/api/contacts?id=${contactId}&name=${displayName}&server=${myServer}`, {
                     method: "POST",
                     headers: {
                         Authorization: "Bearer " + props.token
@@ -143,11 +143,11 @@ function ContactDisplay(props) {
                 })
                     .then(data => data.text())
                     .then(text => console.log(text));
-                await fetch(`/api/invitations?from=${props.currentUser.id}&to=${contactId}&server=${myServer}`, {
+                await fetch("https://localhost:" + webApiPort + `/api/invitations?from=${props.currentUser.id}&to=${contactId}&server=${myServer}`, {
                     method: "POST",
                 })
                 // Send update signal
-                await fetch(`api/hub/update`, {
+                await fetch("https://localhost:" + webApiPort + `api/hub/update`, {
                     method: "POST",
                 });
                 setShowAddContactPopup(false);
@@ -158,7 +158,7 @@ function ContactDisplay(props) {
         }
         else {
             // Add contact on my server
-            await fetch(`/api/contacts?id=${contactId}&name=${displayName}&server=${server}`, {
+            await fetch("https://localhost:" + webApiPort + `/api/contacts?id=${contactId}&name=${displayName}&server=${server}`, {
                 method: "POST",
                 headers: {
                     Authorization: "Bearer " + props.token
@@ -174,7 +174,7 @@ function ContactDisplay(props) {
                 },
             })
             // Send update signal
-            await fetch(`api/hub/update`, {
+            await fetch("https://localhost:" + webApiPort + `api/hub/update`, {
                 method: "POST",
             });
             setShowAddContactPopup(false);

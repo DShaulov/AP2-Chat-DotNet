@@ -55,7 +55,7 @@ function App() {
             var allContacts = [];
             var allMessages = {};
             // Fetch all contacts
-            await fetch("/api/contacts", {
+            await fetch("https://localhost:" + webApiPort + "/api/contacts", {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + tokenArg
@@ -69,7 +69,7 @@ function App() {
                 });
             // Fetch messages for each contact
             for (var i = 0; i < allContacts.length; i++) {
-                await fetch(`/api/contacts/${allContacts[i].id}/messages`, {
+                await fetch("https://localhost:" + webApiPort + `/api/contacts/${allContacts[i].id}/messages`, {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + tokenArg

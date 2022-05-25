@@ -2,6 +2,7 @@ import './Styles/RegisterScreen.css';
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import apiPort from "../../ApiPort";
 
 
 function RegisterScreen(props) {
@@ -15,6 +16,8 @@ function RegisterScreen(props) {
     const [usernameTaken, setUsernameTaken] = useState(false);
 
     const [failedToRegister, setFailedToRegister] = useState(false);
+
+    const webApiPort = apiPort;
 
     function stringHasNumber(string) {
         return /\d/.test(string);
@@ -81,7 +84,7 @@ function RegisterScreen(props) {
             if (passwordsDontMatch) {setPasswordsDontMatch(false)};
         }
         var usernameTakenResponse;
-        await fetch(`/api/usertaken?id=${username}`, {
+        await fetch("https://localhost:" + webApiPort + `/api/usertaken?id=${username}`, {
             method: "POST"
         })
             .then(data => data.text())
@@ -96,21 +99,21 @@ function RegisterScreen(props) {
         }
 
         var registerResponse;
-        await fetch(`/api/userregister?id=${username}&password=${password}&name=${nickname}&server=${"localhost:7201"}`, {
+        await fetch("https://localhost:" + webApiPort + `/api/userregister?id=${username}&password=${password}&name=${nickname}&server=${"localhost:7201"}`, {
             method: "POST"
         })
             .then(data => data.text())
             .then(text => { registerResponse = text; });
 
         var loginResponse;
-        await fetch(`/userauth?username=${username}&password=${password}`, {
+        await fetch("https://localhost:" + webApiPort + `/userauth?username=${username}&password=${password}`, {
             method: "POST"
         })
             .then(data => data.text())
             .then(text => { loginResponse = text });
 
         var userJson;
-        await fetch(`/userauth/getuser?id=${username}`, {
+        await fetch("https://localhost:" + webApiPort + `/userauth/getuser?id=${username}`, {
             method: "POST"
         })
             .then(data => data.json())
@@ -136,7 +139,7 @@ function RegisterScreen(props) {
     }
     async function isUsernameTaken(username) {
         var response;
-        await fetch(`/api/usertaken?id=${username}`, {
+        await fetch("https://localhost:" + webApiPort + `/api/usertaken?id=${username}`, {
             method: "POST"
         })
             .then(data => data.text())
@@ -145,7 +148,7 @@ function RegisterScreen(props) {
     }
     async function register(username, password, nickname) {
         var response;
-        await fetch(`/api/userregister?id=${username}&password=${password}&name=${nickname}&server=${"localhost:7201"}`, {
+        await fetch("https://localhost:" + webApiPort + `/api/userregister?id=${username}&password=${password}&name=${nickname}&server=${"localhost:7201"}`, {
             method: "POST"
         })
             .then(data => data.text())
@@ -154,7 +157,7 @@ function RegisterScreen(props) {
     }
     async function logIn(username, password) {
         var response;
-        await fetch(`/userauth?username=${username}&password=${password}`, {
+        await fetch("https://localhost:" + webApiPort + `/userauth?username=${username}&password=${password}`, {
             method: "POST"
         })
             .then(data => data.text())
