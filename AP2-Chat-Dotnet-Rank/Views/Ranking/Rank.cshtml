@@ -1,0 +1,18 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Ranking ranking = ViewBag.Ranking;
+}
+<br/>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">@ranking.name: @ranking.rank/5</h5>
+        <p class="card-text">@ranking.content</p>
+        <p class="card-text card-text-date">@ranking.date @ranking.time</p>
+    </div>
+</div>
+<div class="button-div">
+    <a asp-controller="Ranking" asp-action="ViewEditRankingPage" asp-route-rankingId=@ranking.id class="btn btn-primary">Edit</a>
+    <a asp-controller="Ranking" asp-action="DeleteRanking" asp-route-rankingId=@ranking.id class="btn btn-danger">Delete</a>
+</div>

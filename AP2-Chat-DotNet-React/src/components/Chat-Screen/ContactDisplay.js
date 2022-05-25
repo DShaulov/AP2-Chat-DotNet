@@ -4,6 +4,8 @@ import { Button, Dropdown, ListGroup, Modal, Form, Navbar, Container, Image } fr
 import { useNavigate } from 'react-router-dom';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 import { CameraFill, CameraVideoFill, MicFill } from 'react-bootstrap-icons';
+import apiPort from "../../ApiPort";
+
 
 
 function ContactDisplay(props) {
@@ -13,6 +15,8 @@ function ContactDisplay(props) {
     const [ contactDoesNotExist, setContactDoesNotExist ] = useState(false);
     const date = new Date();
     const navigate = useNavigate();
+    const webApiPort = apiPort;
+
     window.addEventListener('resize', () => {
         setWindowWidth(window.innerWidth);
         setWindowHeight(window.innerHeight);
@@ -112,7 +116,7 @@ function ContactDisplay(props) {
         let displayName = e.target[0].value;
         let contactId = e.target[1].value;
         let server = e.target[2].value;
-        let myServer = "localhost:3000";
+        let myServer = "localhost:" + webApiPort;
 
         for (const contact of props.contacts) {
             if (contact.id === contactId) {
@@ -121,7 +125,7 @@ function ContactDisplay(props) {
             }
         }
 
-        let isMyServer = (server === "http://localhost:3000") || (server === "localhost:3000") || (server === "https://localhost:3000") || (server === "http://localhost:3000");
+        let isMyServer = (server === "http://localhost:" + webApiPort) || (server === "localhost:" + webApiPort) || (server === "https://localhost:" + webApiPort) || (server === "http://localhost:" + webApiPort);
         if (isMyServer) {
             let contactExists;
             await fetch(`userauth/checkexists?id=${contactId}`, {
@@ -130,6 +134,7 @@ function ContactDisplay(props) {
                 .then(data => data.text())
                 .then(text => { contactExists = text });
             if (contactExists === "EXISTS") {
+                // Add contact on my server
                 await fetch(`/api/contacts?id=${contactId}&name=${displayName}&server=${myServer}`, {
                     method: "POST",
                     headers: {
@@ -138,9 +143,10 @@ function ContactDisplay(props) {
                 })
                     .then(data => data.text())
                     .then(text => console.log(text));
-                await fetch(`/api/invitations?from=${props.currentUser}&to=${contactId}&server=${myServer}`, {
+                await fetch(`/api/invitations?from=${props.currentUser.id}&to=${contactId}&server=${myServer}`, {
                     method: "POST",
                 })
+                // Send update signal
                 await fetch(`api/hub/update`, {
                     method: "POST",
                 });
@@ -151,7 +157,8 @@ function ContactDisplay(props) {
             }
         }
         else {
-            await fetch(`/api/contacts?id=${contactId}&name=${displayName}&server=${myServer}`, {
+            // Add contact on my server
+            await fetch(`/api/contacts?id=${contactId}&name=${displayName}&server=${server}`, {
                 method: "POST",
                 headers: {
                     Authorization: "Bearer " + props.token
@@ -159,12 +166,14 @@ function ContactDisplay(props) {
             })
                 .then(data => data.text())
                 .then(text => console.log(text));
-            await fetch(server + `/api/invitations?from=${props.currentUser}&to=${contactId}&server=${myServer}`, {
+            // Transfer request to add contact in other server
+            await fetch(server + `/api/invitations?from=${props.currentUser.id}&to=${contactId}&server=${server}`, {
                 method: "POST",
                 headers: {
                     Authorization: "Bearer " + props.token
                 },
             })
+            // Send update signal
             await fetch(`api/hub/update`, {
                 method: "POST",
             });

@@ -3,6 +3,7 @@ import './App.css';
 import { useState, useEffect, useRef } from 'react';
 import AppRouter from './components/App-Router/AppRouter';
 import { HubConnectionBuilder } from '@microsoft/signalr';
+import apiPort from "./ApiPort";
 
 function App() {
     const [connection, setConnection] = useState(null);
@@ -17,11 +18,12 @@ function App() {
     const notFirstRenderContacts = useRef(false);
     const notFirstRenderMessages = useRef(false);
     const notFirstRenderHub = useRef(false);
+    const webApiPort = apiPort;
 
 
     useEffect(() => {
         const newConnection = new HubConnectionBuilder()
-            .withUrl("https://localhost:7201/hub")
+            .withUrl("https://localhost:" + webApiPort + "/hub")
             .withAutomaticReconnect()
             .build();
         setConnection(newConnection);

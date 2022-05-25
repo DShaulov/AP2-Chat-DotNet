@@ -2,8 +2,10 @@ import './Styles/MessageDisplay.css';
 import { useState, useEffect } from 'react';
 import { ListGroup, Navbar, Image, Button, Form, Popover, OverlayTrigger, Modal } from 'react-bootstrap';
 import { Paperclip, ArrowRightCircle, Mic, Camera, CameraVideo } from 'react-bootstrap-icons';
+import apiPort from "../../ApiPort";
 
 function MessageDisplay(props) {
+    const webApiPort = apiPort;
     useEffect(()=> {
         // Scroll chat window to bottom on render
         let chatDiv = document.getElementsByClassName("messages-div")[0];
@@ -16,7 +18,7 @@ function MessageDisplay(props) {
     async function sendTextMessage(event) {
         event.preventDefault();
         let server = retrieveContactServer(props.userChattingWithId);
-        let isMyServer = (server === "http://localhost:3000") || (server === "localhost:3000") || (server === "https://localhost:3000") || (server === "http://localhost:3000");
+        let isMyServer = (server === "http://localhost:" + webApiPort) || (server === "localhost:" + webApiPort) || (server === "https://localhost:" + webApiPort) || (server === "http://localhost:" + webApiPort);
         let content = event.target[0].value;
         await fetch(`api/contacts/${props.userChattingWithId}/messages?content=${content}`, {
             method: "POST",

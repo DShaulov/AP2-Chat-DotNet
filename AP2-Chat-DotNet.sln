@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP2-Chat-Dotnet-Rank", "..\..\..\Desktop\AP2-Chat-Dotnet-Rank\AP2-Chat-Dotnet-Rank.csproj", "{16DA8183-5461-450B-907A-C3DBE68C6A4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP2-Chat-Dotnet-Rank", "AP2-Chat-Dotnet-Rank\AP2-Chat-Dotnet-Rank.csproj", "{5B5FBC17-C0A6-49CA-92F4-1DFDF2F7B95E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +31,10 @@ Global
 		{064F8CC1-1E88-4726-9254-28E5C4DF685B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{064F8CC1-1E88-4726-9254-28E5C4DF685B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{064F8CC1-1E88-4726-9254-28E5C4DF685B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{16DA8183-5461-450B-907A-C3DBE68C6A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{16DA8183-5461-450B-907A-C3DBE68C6A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{16DA8183-5461-450B-907A-C3DBE68C6A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{16DA8183-5461-450B-907A-C3DBE68C6A4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B5FBC17-C0A6-49CA-92F4-1DFDF2F7B95E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B5FBC17-C0A6-49CA-92F4-1DFDF2F7B95E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B5FBC17-C0A6-49CA-92F4-1DFDF2F7B95E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B5FBC17-C0A6-49CA-92F4-1DFDF2F7B95E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

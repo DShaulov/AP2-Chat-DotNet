@@ -1,0 +1,80 @@
+﻿.navbar {
+    font-family: Palatino;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0b0c10;
+    color: azure;
+    height: 10%;
+    max-height: 10%;
+    z-index: 2;
+    box-shadow: 0px 3px 10px black;
+
+}
+
+.navbar__title-div {
+    display: flex;
+    cursor: pointer;
+    font-family: Copperplate;
+    font-style: italic;
+    flex-basis: 10%;
+    text-align: center;
+    margin-right: 10%;
+}
+
+.navbar_title-div__logo {
+    width: 80px;
+    height: 80px;
+}
+
+.navbar__title-div__header {
+    font-size: 40px;
+    margin-top: 8%;
+}
+
+.custom-navbar__image-brand-container {
+    display: flex;
+}
+
+h5 {
+    font-family: copperplate;
+    font-weight: 600;
+}
+
+.card-text-date {
+    text-align:right;
+}
+.a-no-highlight {
+    color: #212529;
+    text-decoration: none;
+}
+.button-div {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+.add-rating-btn {
+    margin-left: 43%;
+    margin-top: 2%;
+}
+.my-form {
+    width: 50%;
+    text-align: center;
+}
+.my-select {
+    width: 20%;
+    text-align: center;
+}
+.my-select-div {
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+}
+.search-form-div {
+    display: flex;
+    flex-direction: row;
+}

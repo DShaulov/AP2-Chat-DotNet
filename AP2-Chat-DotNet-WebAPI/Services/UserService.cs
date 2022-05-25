@@ -44,31 +44,31 @@ namespace AP2_Chat_DotNet_WebAPI.Services
             frank.id = "frank";
             frank.password = "123";
             frank.name = "Frank";
-            frank.server = "localhost:3000";
+            frank.server = "https://localhost:7201";
 
             User dee = new User();
             dee.id = "dee";
             dee.password = "123";
             dee.name = "Dee";
-            dee.server = "localhost:3000";
+            dee.server = "https://localhost:7201";
 
             User charlie = new User();
             charlie.id = "charlie";
             charlie.password = "123";
             charlie.name = "Charlie";
-            charlie.server = "localhost:3000";
+            charlie.server = "https://localhost:7201";
 
             User mac = new User();
             mac.id = "mac";
             mac.password = "123";
             mac.name = "Mac";
-            mac.server = "localhost:3000";
+            mac.server = "https://localhost:7201";
 
             User dennis = new User();
             dennis.id = "dennis";
             dennis.password = "123";
             dennis.name = "Dennis";
-            dennis.server = "localhost:3000";
+            dennis.server = "https://localhost:7201";
 
             populatingUsers.Add(frank);
             populatingUsers.Add(charlie);

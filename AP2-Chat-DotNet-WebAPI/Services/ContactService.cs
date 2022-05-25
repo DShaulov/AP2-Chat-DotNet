@@ -101,77 +101,77 @@ namespace AP2_Chat_DotNet_WebAPI.Services
 
 
             frankOfCharlie.name = "Frank";
-            frankOfCharlie.server = "localhost:3000";
+            frankOfCharlie.server = "https://localhost:7201";
             frankOfCharlie.id = "frank";
             frankOfCharlie.last = "Botched toe, thats a botched toe.";
             frankOfCharlie.lastdate = "2022-04-24T08:00";
             frankOfCharlie.whose = "charlie";
 
             frankOfDee.name = "Frank";
-            frankOfDee.server = "localhost:3000";
+            frankOfDee.server = "https://localhost:7201";
             frankOfDee.id = "frank";
             frankOfDee.last = "Deandra will take care of me.";
             frankOfDee.lastdate = "2022-04-24T08:02";
             frankOfDee.whose = "dee";
 
             dennisOfCharlie.name = "Dennis";
-            dennisOfCharlie.server = "localhost:3000";
+            dennisOfCharlie.server = "https://localhost:7201";
             dennisOfCharlie.id = "dennis";
             dennisOfCharlie.last = "Ghouls dont exist.";
             dennisOfCharlie.lastdate = "2022-04-24T16:00";
             dennisOfCharlie.whose = "charlie";
 
             dennisOfMac.name = "Dennis";
-            dennisOfMac.server = "localhost:3000";
+            dennisOfMac.server = "https://localhost:7201";
             dennisOfMac.id = "dennis";
             dennisOfMac.last = "I have a dennis shaped hole inside of me.";
             dennisOfMac.lastdate = "2022-04-24T16:00";
             dennisOfMac.whose = "mac";
 
             frankOfDee.name = "Frank";
-            frankOfDee.server = "localhost:3000";
+            frankOfDee.server = "https://localhost:7201";
             frankOfDee.id = "frank";
             frankOfDee.last = "Deandra will take care of me.";
             frankOfDee.lastdate = "2022-04-24T08:02";
             frankOfDee.whose = "dee";
 
             macOfDee.name = "Mac";
-            macOfDee.server = "localhost:3000";
+            macOfDee.server = "https://localhost:7201";
             macOfDee.id = "mac";
             macOfDee.last = "My elbows are massive.";
             macOfDee.lastdate = "2022-04-24T07:04";
             macOfDee.whose = "dee";
 
             macOfDennis.name = "Mac";
-            macOfDennis.server = "localhost:3000";
+            macOfDennis.server = "https://localhost:7201";
             macOfDennis.id = "mac";
             macOfDennis.last = "I have a dennis shaped hole inside of me.";
             macOfDennis.lastdate = "2022-04-24T07:04";
             macOfDennis.whose = "dennis";
 
             deeOfFrank.name = "Dee";
-            deeOfFrank.server = "localhost:3000";
+            deeOfFrank.server = "https://localhost:7201";
             deeOfFrank.id = "dee";
             deeOfFrank.last = "Deandra will take care of me.";
             deeOfFrank.lastdate = "2022-04-24T18:04";
             deeOfFrank.whose = "frank";
 
             deeOfMac.name = "Dee";
-            deeOfMac.server = "localhost:3000";
+            deeOfMac.server = "https://localhost:7201";
             deeOfMac.id = "dee";
             deeOfMac.last = "My elbows are massive.";
             deeOfMac.lastdate = "2022-04-24T21:05";
             deeOfMac.whose = "mac";
 
             charlieOfDennis.name = "Charlie";
-            charlieOfDennis.server = "localhost:3000";
+            charlieOfDennis.server = "https://localhost:7201";
             charlieOfDennis.id = "charlie";
             charlieOfDennis.last = "Ghouls dont exist.";
             charlieOfDennis.lastdate = "2022-04-24T19:04";
             charlieOfDennis.whose = "dennis";
 
             charlieOfFrank.name = "Charlie";
-            charlieOfFrank.server = "localhost:3000";
+            charlieOfFrank.server = "https://localhost:7201";
             charlieOfFrank.id = "charlie";
             charlieOfFrank.last = "Botched toe, thats a botched toe.";
             charlieOfFrank.lastdate = "2022-04-24T15:34";
