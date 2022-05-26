@@ -25,12 +25,7 @@
     "eject": "react-scripts eject",
     "prestart": "node aspnetcore-https && node aspnetcore-react"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
+  "eslintConfig": {},
   "browserslist": {
     "production": [
       ">0.2%",

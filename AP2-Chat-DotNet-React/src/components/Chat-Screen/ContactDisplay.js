@@ -12,7 +12,8 @@ function ContactDisplay(props) {
     const [ windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [ windowHeight, setWindowHeight ] = useState(window.innerHeight);
     const [ showAddContactPopup, setShowAddContactPopup ] = useState(false);
-    const [ contactDoesNotExist, setContactDoesNotExist ] = useState(false);
+    const [contactDoesNotExist, setContactDoesNotExist] = useState(false);
+    const [serverError, setServerError] = useState(false);
     const date = new Date();
     const navigate = useNavigate();
     const webApiPort = apiPort;
@@ -113,9 +114,14 @@ function ContactDisplay(props) {
      */
     async function addContact(e) {
         e.preventDefault();
+        setServerError(false);
         let displayName = e.target[0].value;
         let contactId = e.target[1].value;
         let server = e.target[2].value;
+        if ((!server.includes("http")) && (!server.includes("localhost"))) {
+            setServerError(true);
+            return;
+        }
         let myServer = "localhost:" + webApiPort;
 
         for (const contact of props.contacts) {
@@ -128,7 +134,7 @@ function ContactDisplay(props) {
         let isMyServer = (server === "http://localhost:" + webApiPort) || (server === "localhost:" + webApiPort) || (server === "https://localhost:" + webApiPort) || (server === "http://localhost:" + webApiPort);
         if (isMyServer) {
             let contactExists;
-            await fetch("https://localhost:" + webApiPort + `userauth/checkexists?id=${contactId}`, {
+            await fetch("https://localhost:" + webApiPort + `/userauth/checkexists?id=${contactId}`, {
                 method: "POST"
             })
                 .then(data => data.text())
@@ -147,7 +153,7 @@ function ContactDisplay(props) {
                     method: "POST",
                 })
                 // Send update signal
-                await fetch("https://localhost:" + webApiPort + `api/hub/update`, {
+                await fetch("https://localhost:" + webApiPort + `/api/hub/update`, {
                     method: "POST",
                 });
                 setShowAddContactPopup(false);
@@ -157,6 +163,21 @@ function ContactDisplay(props) {
             }
         }
         else {
+            var serverFail = false;
+            // Transfer request to add contact in other server
+            await fetch(server + "/" + `api/invitations?from=${props.currentUser.id}&to=${contactId}&server=${server}`, {
+                method: "POST",
+                headers: {
+                    Authorization: "Bearer " + props.token
+                },
+            }).catch(() => {
+                serverFail = true;
+                setServerError(true);
+                return;
+            })
+            if (serverFail) {
+                return;
+            }
             // Add contact on my server
             await fetch("https://localhost:" + webApiPort + `/api/contacts?id=${contactId}&name=${displayName}&server=${server}`, {
                 method: "POST",
@@ -166,15 +187,8 @@ function ContactDisplay(props) {
             })
                 .then(data => data.text())
                 .then(text => console.log(text));
-            // Transfer request to add contact in other server
-            await fetch(server + `/api/invitations?from=${props.currentUser.id}&to=${contactId}&server=${server}`, {
-                method: "POST",
-                headers: {
-                    Authorization: "Bearer " + props.token
-                },
-            })
             // Send update signal
-            await fetch("https://localhost:" + webApiPort + `api/hub/update`, {
+            await fetch("https://localhost:" + webApiPort + `/api/hub/update`, {
                 method: "POST",
             });
             setShowAddContactPopup(false);
@@ -213,8 +227,14 @@ function ContactDisplay(props) {
                         <Form.Group >
                             <Form.Label>Contact:</Form.Label>
                             <Form.Control placeholder="Enter contact nickname"></Form.Control>
+                            <br/>
                             <Form.Control placeholder="Enter contact username"></Form.Control>
+                            <br />
                             <Form.Control placeholder="Enter contact server"></Form.Control>
+                            {serverError &&
+                            <Form.Text className="warning-text">*Not a valid server address or server not responding</Form.Text>
+                            }
+                            <br />
                             {contactDoesNotExist &&
                             <Form.Text className="warning-text">*Contact does not exist</Form.Text>
                             }
