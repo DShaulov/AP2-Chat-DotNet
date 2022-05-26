@@ -3,6 +3,10 @@ using System.Text.Json.Nodes;
 
 namespace AP2_Chat_DotNet_WebAPI.Services
 {
+    public class LaunchSettings
+    {
+
+    }
     public class ContactService : IContactService
     {
         private static List<Contact>? contacts;

@@ -39,7 +39,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("Allow All",
         corsBuilder =>
         {
-            String[] allowedOrigins = { "https://localhost:3000" };
+            String[] allowedOrigins = { "https://localhost:3000", "https://localhost:3001" };
             corsBuilder.AllowAnyHeader()
             .AllowAnyMethod()
             .WithOrigins(allowedOrigins)

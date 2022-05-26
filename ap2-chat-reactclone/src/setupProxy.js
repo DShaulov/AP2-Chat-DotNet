@@ -1,17 +1,12 @@
 ﻿const { createProxyMiddleware } = require('http-proxy-middleware');
-import apiPort from "./ApiPort";
-
 
 const context = [
-    "/api",
-    "/hub",
-    "/userauth",
+    "/weatherforecast",
 ];
 
 module.exports = function (app) {
-    const target = "https://localhost:" + apiPort;
     const appProxy = createProxyMiddleware(context, {
-        target: target,
+        target: 'https://localhost:5001',
         secure: false
     });
 
