@@ -27,8 +27,7 @@ The WebAPI uses JWT tokens for request authorization.
 1) Clone the repository and open it.
 2) Open AP2-Chat-DotNet.sln to open the solution.
 3) Right click on the solution -> Set Startup Projects -> Multiple Startup Projects -> AP2-Chat-DotNet-React (start) + AP2-Chat-DotNet-WebAPI (start).
-4) Open AP2-Chat-DotNet-React in terminal and run "npm install" to install required packages.
-5) Click Start (green arrow).
+4) Click Start (green arrow).
 
 ### Hardcoded Users:
 The WebAPI makes use of services and static data structures in order to simulate a database.
