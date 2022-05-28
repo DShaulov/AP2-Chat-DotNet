@@ -122,6 +122,10 @@ function ContactDisplay(props) {
             setServerError(true);
             return;
         }
+        if (contactId === props.currentUser.id) {
+            setShowAddContactPopup(false);
+            return;
+        }
         let myServer = "https://localhost:" + webApiPort;
 
         for (const contact of props.contacts) {

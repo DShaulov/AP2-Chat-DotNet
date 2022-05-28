@@ -29,6 +29,8 @@ The WebAPI uses JWT tokens for request authorization.
 3) Right click on the solution -> Set Startup Projects -> Multiple Startup Projects -> AP2-Chat-DotNet-React (start) + AP2-Chat-DotNet-WebAPI (start).
 4) Click Start (green arrow).
 * In some cases the react server might come up before the api server and wont connect in time. In that case, refresh the react page.
+* When adding contacts, the full server address is required, for example "https://localhost:xxxx"
+* Default port for the web api is 7201, and for react is 3000.
 
 ### Hardcoded Users:
 The WebAPI makes use of services and static data structures in order to simulate a database.
