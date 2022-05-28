@@ -122,7 +122,7 @@ function ContactDisplay(props) {
             setServerError(true);
             return;
         }
-        let myServer = "localhost:" + webApiPort;
+        let myServer = "https://localhost:" + webApiPort;
 
         for (const contact of props.contacts) {
             if (contact.id === contactId) {
@@ -149,6 +149,7 @@ function ContactDisplay(props) {
                 })
                     .then(data => data.text())
                     .then(text => console.log(text));
+                // Add contact for other user
                 await fetch("https://localhost:" + webApiPort + `/api/invitations?from=${props.currentUser.id}&to=${contactId}&server=${myServer}`, {
                     method: "POST",
                 })
@@ -165,7 +166,7 @@ function ContactDisplay(props) {
         else {
             var serverFail = false;
             // Transfer request to add contact in other server
-            await fetch(server + "/" + `api/invitations?from=${props.currentUser.id}&to=${contactId}&server=${server}`, {
+            await fetch(server + "/" + `api/invitations?from=${props.currentUser.id}&to=${contactId}&server=${myServer}`, {
                 method: "POST",
                 headers: {
                     Authorization: "Bearer " + props.token
